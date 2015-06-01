@@ -18,8 +18,11 @@
             callback : 'undefined'
         };
         if(options){
-            $.extend(set,options);
-        }
+        	var key;
+        	for(key in options){
+        		set[key] = options[key];
+        	};
+        };
         // 같은 스크립트 파일 중복 로드 방지
         // typeof UTIL.loadScriptStatus[url] 이 'undefined' 일경우 UTIL.loadScriptStatus[url] 에 0 을 저장.
         if(typeof UTIL.loadScriptStatus[url] === 'undefined'){

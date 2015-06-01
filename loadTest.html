@@ -11,7 +11,26 @@
 	<div class="contents">
 		<h1>css &amp; js File loader</h1>
 		<p>css 파일 및 js 파일을 비동기 로드 할 수 있습니다.</p>
+		<input type="text" id="state" value="null">
+		<button id="jqueryLoad">jquery-1.11.3.js load</button>
 	</div>
 	<script type="text/javascript" src="cssJsLoader.js"></script>
+	<script>
+		var url = 'http://code.jquery.com/jquery-1.11.3.min.js',
+			btn = document.getElementById('jqueryLoad');
+			btn.addEventListener('click',startLoad);
+		function startLoad(){
+			var obj = document.getElementById('state');
+			obj.setAttribute('value','start');
+			UTIL.realTimeScript(url,{
+				opt : 'script',
+				callback : function(){
+					obj.setAttribute('value','loadComplete');
+				}
+			});
+		};
+
+		
+	</script>
 </body>
 </html>
